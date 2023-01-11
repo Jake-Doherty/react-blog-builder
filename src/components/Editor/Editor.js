@@ -10,12 +10,15 @@ export default function Editor({
   font,
   setFont,
   setAlign,
+  text,
+  setText,
 }) {
   const handleChange = (event) => {
     event.target.name === 'title' && setTitle(event.target.value);
     event.target.name === 'subtitle' && setSubTitle(event.target.value);
     event.target.name === 'font' && setFont(event.target.value);
     event.target.name === 'align' && setAlign(event.target.value);
+    event.target.name === 'text-area' && setText(event.target.value);
   };
 
   return (
@@ -59,7 +62,13 @@ export default function Editor({
         </div>
       </div>
       <div className="form-control">
-        <textarea style={{ height: '250px' }} />
+        <textarea
+          name="text-area"
+          style={{ height: '250px' }}
+          value={text}
+          onChange={handleChange}
+          placeholder="Write your blog text here..."
+        />
         <label>Text</label>
       </div>
     </div>
